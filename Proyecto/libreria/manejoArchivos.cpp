@@ -1,21 +1,21 @@
 #include <libreria.h>
 
-int largo_archivo (ifstream archivo_clientes)
+int largo_archivo (ifstream &archivo_clientes)
 {
 
     int cant_elemententos = 0;
     string header,linea;
 
-    if(!archivo_clientes.is_open())
+    if(!*(archivo_clientes).is_open())
     {
         cout<<"Hubo un error al abrir el archivo"<<endl; //???
         return -1;
     }
-    getline(archivo_clientes,header);
+    getline(*(archivo_clientes),header);
 
-    while(archivo_clientes.good())
+    while(*(archivo_clientes).good())
     {
-        getline(archivo_clientes,linea);
+        getline(*(archivo_clientes),linea);
         cant_elemententos++;
     }
 
@@ -23,31 +23,31 @@ int largo_archivo (ifstream archivo_clientes)
 
 }
 
-void leer_archivo_clientes(ifstream archivo_clientes, Clientes *array_clientes)
+void leer_archivo_clientes(ifstream &archivo_clientes, Clientes *array_clientes)
 {
     string header;
     int i = 0;
 
-    int id_aux;
+    string id_aux;
     string nombre_aux;
     string apellido_aux;
     string email_aux;
     string telefono_aux;
     string fechaNac_aux;
-    int estado_aux;
+    string estado_aux;
 
     char delimiter = ',';
 
-    if(!archivo_clientes.is_open()) //Chequeo que se haya abierto bien el archivo
+    if(!*(archivo_clientes).is_open()) //Chequeo que se haya abierto bien el archivo
     {
         cout<<"Hubo un error al abrir el archivo"<<endl;
         return;
     }
-    getline(archivo_clientes,header); //Me copio el header característico de los .csv para desecharlo
+    getline(*(archivo_clientes),header); //Me copio el header característico de los .csv para desecharlo
 
     //*archivo_clientes>>id_aux>>delimiter>>nombre_aux>>delimiter>>apellido_aux>>delimiter>>email_aux>>delimiter>>telefono_aux>>delimiter>>fechaNac_aux>>delimiter>>delimiter>>estado_aux>>
 
-    while( archivo_clientes.good() )
+    while( *(archivo_clientes).good() )
     {
         //PODRIA FALLAR SI ME PONEN UN ESPACIO, USAR ISTREAMSTRING
         archivo_clientes>>id_aux>>delimiter>>nombre_aux>>delimiter>>apellido_aux>>delimiter>>email_aux>>delimiter>>telefono_aux>>delimiter>>fechaNac_aux>>delimiter>>estado_aux;
@@ -70,29 +70,32 @@ void leer_archivo_clientes(ifstream archivo_clientes, Clientes *array_clientes)
     return;
 }
 
-void leer_archivo_reservas (ifstream archivo_reservas, Clases *array_reservas)
+void leer_archivo_reservas (ifstream &archivo, Clases *array_reservas)
 {
     string header;
     int i = 0;
 
     char delimiter = ',';
 
-    int idClase_aux;
+    string idClase_aux;
     string nombre_aux;
-    float horario_aux;
+    string horario_aux;
 
 
-    if(!archivo_reservas.is_open()) //Chequeo que se haya abierto bien el archivo
+
+    if(!*(archivo).is_open()) //Chequeo que se haya abierto bien el archivo
     {
         cout<<"Hubo un error al abrir el archivo"<<endl;
         return;
     }
 
-    getline(archivo_reservas,header);//Me copio el header para descartarlo
+    getline(*(archivo),header);//Me copio el header para descartarlo
 
-    while(archivo_reservas.good()){
+
+    while(*(archivo).good()){
 
         archivo_reservas>>idClase_aux>>delimiter>>nombre_aux>>delimiter>>horario_aux;
+
         //SE PODRIA AGREGAR UN FILTRO PARA SABER SI LOS DATOS ESTAN BIEN O MAL
 
         (array_reservas+i)->idClase = idClase_aux;

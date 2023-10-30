@@ -3,4 +3,6 @@
 
 #include <libreria.h>
 
+//void resize_clientes (Clientes *&array_clientes, int &nclientes);
+
 #endif // FUNCAUX_H

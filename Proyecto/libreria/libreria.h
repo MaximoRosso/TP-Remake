@@ -22,21 +22,21 @@ struct Clases_inicializadas{
 
 struct Clientes{
 
-    int idCliente;
+    string idCliente;
     string nombre;
     string apellido;
     string email;
     string telefono;
     string fechaNac;
-    int estado;
+    string estado;
 
 };
 
 struct Clases{
 
-    int idClase;
+    string idClase;
     string nombre_clase;
-    float horario;
+    string horario;
 
 };
 

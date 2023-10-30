@@ -24,6 +24,27 @@ bool ExistenciaHorarioClase(string *horario, int horBuscado){//esta funcion busc
         return -1;
 }
 
-int buscarCliente(Cliente id, ){
+/*int buscarCliente(Cliente id, ){
     // no se que pasarle a esta func
 }
+void resize_clientes (Clientes *&array_clientes, int &nclientes)
+{
+    nclientes++;
+
+    Clientes *array_clientes_aux = new Clientes [nclientes];
+
+    if(array_clientes_aux == nullptr) //Veo si tengo memoria
+        return;
+
+
+    for(int i = 0; i<(nclientes-1);i++)
+    {
+        array_clientes_aux[i] = array_clientes[i];
+    }
+
+    delete [] array_clientes;
+    array_clientes = array_clientes_aux;
+
+    return;
+}
+*/

@@ -10,9 +10,9 @@
 
 using namespace std;
 
-int largo_archivo (ifstream);
-void leer_archivo_clientes (ifstream, Clientes);
-void leer_archivo_reservas (ifstream, Clases);
+int largo_archivo (ifstream &archivo);
+void leer_archivo_clientes (ifstream &archivo, Clientes*);
+void leer_archivo_reservas (ifstream &archivo, Clases*);
 
 
 #endif // MANEJOARCHIVOS_H
