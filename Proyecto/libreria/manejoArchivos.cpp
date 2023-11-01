@@ -58,8 +58,8 @@ void leer_archivo_clientes(ifstream &archivo_clientes, Clientes *array_clientes)
         (array_clientes+i)->nombre = nombre_aux;
         (array_clientes+i)->apellido = apellido_aux;
         (array_clientes+i)->email = email_aux;
-        (array_clientes+i)->telefono = telefono_aux
-                                         (array_clientes+i)->fechaNac = fechaNac_aux;
+        (array_clientes+i)->telefono = telefono_aux;
+        (array_clientes+i)->fechaNac = fechaNac_aux;
         (array_clientes+i)->estado = estado_aux;
 
 
