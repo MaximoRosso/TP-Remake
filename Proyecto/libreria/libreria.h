@@ -13,16 +13,10 @@
 
 using namespace std;
 
-struct Clases_inicializadas{
-
-    string nombre;
-    const int cupo;
-    int horario[12];
-};
 
 struct Clientes{
 
-    string idCliente;
+    unsigned int idCliente;
     string nombre;
     string apellido;
     string email;
@@ -34,10 +28,10 @@ struct Clientes{
 
 struct Clases{
 
-    string idClase;
+    unsigned int idClase;
     string nombre_clase;
     string horario;
-
+    const int cupo;
 };
 
 
@@ -55,6 +49,15 @@ typedef struct {
 
 } Asistencia;
 
+/*
+ * struct Clases_inicializadas{
+
+    string nombre;
+
+    int horario[12];
+};
+
+ */
 
 
 #endif // LIBRERIA_H
