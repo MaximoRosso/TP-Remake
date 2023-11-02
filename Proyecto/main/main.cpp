@@ -1,7 +1,7 @@
 #include <libreria.h>
 #define NOMBRE_CSV_CLIENTES "../iriClientesGYM.csv"
 #define NOMBRE_CSV_RESERVAS "../iriClasesGYM.csv"
-
+#include <manejoArchivos.h>
 int main(int argc, char *argv[]) {
 
     ifstream archivo_datos_clientes;
@@ -9,8 +9,8 @@ int main(int argc, char *argv[]) {
     ifstream archivo_datos_reservas;
     archivo_datos_reservas.open(NOMBRE_CSV_RESERVAS);
 
-    int nclientes = 0;
-    int nreservas = 0;
+    int nclientes = largo_archivo(archivo_datos_clientes);
+    int nreservas = largo_archivo(archivo_datos_reservas);
 
     Clientes* array_clientes = new Clientes [nclientes];
     Clases* array_reservas = new Clases [nreservas];
