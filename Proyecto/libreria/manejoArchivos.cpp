@@ -94,7 +94,7 @@ void leer_archivo_reservas (ifstream &archivo, Clases *array_reservas)
 
     while(*(archivo).good()){
 
-        archivo_reservas>>idClase_aux>>delimiter>>nombre_aux>>delimiter>>horario_aux;
+        archivo>>idClase_aux>>delimiter>>nombre_aux>>delimiter>>horario_aux;
 
         //SE PODRIA AGREGAR UN FILTRO PARA SABER SI LOS DATOS ESTAN BIEN O MAL
 
