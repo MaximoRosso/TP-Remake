@@ -18,8 +18,6 @@ int main(int argc, char *argv[]) {
     delete [] array_clientes;
     delete [] array_reservas;
 
-    archivo_datos_clientes.close();
-    archivo_datos_reservas.close();
 
     return 0;
 }

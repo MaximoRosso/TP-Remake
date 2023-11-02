@@ -58,8 +58,8 @@ void leer_archivo_clientes(ifstream &archivo_clientes, Clientes *array_clientes)
         (array_clientes+i)->nombre = nombre_aux;
         (array_clientes+i)->apellido = apellido_aux;
         (array_clientes+i)->email = email_aux;
-        (array_clientes+i)->telefono = telefono_aux;
-        (array_clientes+i)->fechaNac = fechaNac_aux;
+        (array_clientes+i)->telefono = telefono_aux
+                                         (array_clientes+i)->fechaNac = fechaNac_aux;
         (array_clientes+i)->estado = estado_aux;
 
 
@@ -94,7 +94,7 @@ void leer_archivo_reservas (ifstream &archivo, Clases *array_reservas)
 
     while(*(archivo).good()){
 
-        archivo>>idClase_aux>>delimiter>>nombre_aux>>delimiter>>horario_aux;
+        archivo_reservas>>idClase_aux>>delimiter>>nombre_aux>>delimiter>>horario_aux;
 
         //SE PODRIA AGREGAR UN FILTRO PARA SABER SI LOS DATOS ESTAN BIEN O MAL
 
