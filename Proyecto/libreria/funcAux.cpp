@@ -1,5 +1,6 @@
 #include <funcAux.h>
 
+/*
 bool ExistenciaID(Clases *array_clases, int IDBuscado){// esta funcion busca que exista el nombre de la clase que se pide
     //no se que pasarle en la parte de asistencia
     int i;
@@ -13,10 +14,45 @@ bool ExistenciaID(Clases *array_clases, int IDBuscado){// esta funcion busca que
     }
     if( aux == ultimo)
         return 0;//no existe
-}
+}*/
+bool identificar_menores(string fecha)
+{
+    string aux;
 
-int buscarCliente(Cliente id, Asistencia * ){// estoy buscando un cliente
-    // no se que pasarle a esta func
+    aux = fecha.substr(6,10);
+
+    if(aux.compare("2008") == -1)
+        return true;
+    else
+        return false;
+
+}
+/*bool existencia_clase(Clases clase, int nclases)
+{
+    if(clase.idClase > 0 && clase.idClase < nclases)
+        return true;
+    else
+        return false;
+}*/
+bool chequear_letras_nombres (string cliente_aux)
+{
+
+    int largo_nombre = cliente_aux.length();
+
+    int i;
+
+    for(i=0;i<largo_nombre;i++)
+    {
+        /*if(cliente_aux[i] == 'á' || cliente_aux[i]== 'é'|| cliente_aux[i]== 'í' || cliente_aux[i]== 'ó' || cliente_aux[i]== 'ú') //NO ME DETECTA LAS LETRAS CON ACENTO A PESAR Q SE LO INDICO
+        {
+            continue;
+        }*/
+        if( !(cliente_aux[i] >= 'a' && cliente_aux[i] <= 'z') && !(cliente_aux[i] >= 'A' && cliente_aux[i] <= 'Z'))
+        {
+            return false;
+        }
+    }
+    return true;
 
 }
 /*

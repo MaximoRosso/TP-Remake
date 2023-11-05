@@ -8,15 +8,12 @@
 #include <fstream>
 #include <sstream>
 
-#define NOMBRE_CSV_CLIENTES "iriClientesGYM.csv"
-#define NOMBRE_CSV_RESERVAS "iriClasesGYM.csv"
-
 using namespace std;
 
 
 struct Clientes{
 
-    unsigned int idCliente;
+    string idCliente;
     string nombre;
     string apellido;
     string email;
@@ -28,10 +25,10 @@ struct Clientes{
 
 struct Clases{
 
-    unsigned int idClase;
+    string idClase;
     string nombre_clase;
     string horario;
-    const int cupo;
+    string cupo;
 };
 
 
