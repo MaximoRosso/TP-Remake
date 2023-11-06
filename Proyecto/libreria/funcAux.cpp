@@ -55,6 +55,23 @@ bool chequear_letras_nombres (string cliente_aux)
     return true;
 
 }
+
+bool ExistenciaPersona(Clientes *array_clientes, int nclientes, string IDBuscado){
+    Clientes *aux= array_clientes;// para no perder el punt de la cabeza del array
+    Clientes *ultimo= (array_clientes + nclientes -1);//busco la ultima posicion del array de clases
+    while(aux != ultimo){//hasta que llegue al final
+        if(aux->idCliente.compare( IDBuscado) == 0 )//comparo que los ID sean iguales
+            return true;//existe ese ID
+
+        aux++;//aumento el puntero para avanzar
+    }
+    if( aux == ultimo)
+        return false;//no existe
+}
+
+bool CuposDisponibles(){//pensarla y hacer
+
+}
 /*
 void resize_clientes (Clientes *&array_clientes, int &nclientes)
 {
