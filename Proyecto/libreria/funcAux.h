@@ -5,8 +5,9 @@
 
 
 bool identificar_menores(string);
-//bool existencia_clase(Clases, int);
+bool existencia_clase(Clases, int);
 bool chequear_letras_nombres (string);
+bool ExistenciaPersona(Clientes, int, string);
 
 //void resize_clientes (Clientes *&array_clientes, int &nclientes);
 

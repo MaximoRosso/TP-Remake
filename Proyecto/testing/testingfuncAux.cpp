@@ -30,13 +30,11 @@ TEST_CASE("Existencia de la clase"){
     arrayClases[2]={"51", "Musculacion", "15.3"};
     //inicializo mis clases
 
-    SECTION("Existe la clase")
+    SECTION("Existe la clase"){
         bool respuesta;
-        respuesta=existencia_clase(arrayClases, nclases);
+        respuesta=existencia_clase( *arrayClases, nclases);
 
     };
-
-
 }
 
 
@@ -85,7 +83,7 @@ bool ExistenciaPersona(Clientes *array_clientes, int nclientes, string IDBuscado
         return false;//no existe
 }
 
-
+*/
 
 
 
