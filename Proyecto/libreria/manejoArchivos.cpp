@@ -55,8 +55,9 @@ void leer_archivo_clases (ifstream &archivo, Clases *array_clases)
         getline(s,horario_aux,delimiter);
 
         /*      AGREGAR FILTROS       */
+        int StoI_Id = stoi(idClase_aux);
 
-        (array_clases+i)->idClase = idClase_aux;
+        (array_clases+i)->idClase = StoI_Id;
         (array_clases+i)->nombre_clase = nombre_aux;
         (array_clases+i)->horario = horario_aux;
 

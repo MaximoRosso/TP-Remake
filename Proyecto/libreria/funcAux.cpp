@@ -1,20 +1,5 @@
 #include <funcAux.h>
 
-/*
-bool ExistenciaID(Clases *array_clases, int IDBuscado){// esta funcion busca que exista el nombre de la clase que se pide
-    //no se que pasarle en la parte de asistencia
-    int i;
-    Clases *aux= array_clases;// para no perder el punt de la cabeza del array
-    Clases *ultimo= *(array_clases + nclases -1);//busco la ultima posicion del array de clases
-    while(aux != ultimo){//hasta que llegue al final
-        if(aux->idClase == IDBuscado)
-            return 1;//existe ese nombre de clase
-
-        aux++;//aumento el puntero para avanzar
-    }
-    if( aux == ultimo)
-        return 0;//no existe
-}*/
 bool identificar_menores(string fecha)
 {
     string aux;
@@ -27,13 +12,15 @@ bool identificar_menores(string fecha)
         return false;
 
 }
-/*bool existencia_clase(Clases clase, int nclases)
+
+/*bool existencia_clase(string ID, int nclases)
 {
-    if(clase.idClase > 0 && clase.idClase < nclases)
+    if(ID > 0 && ID < nclases)
         return true;
     else
         return false;
 }*/
+
 bool chequear_letras_nombres (string cliente_aux)
 {
 
@@ -67,11 +54,8 @@ bool ExistenciaPersona(Clientes *array_clientes, int nclientes, string IDBuscado
     }
     if( aux == ultimo)
         return false;//no existe
-}
+}//preguntar porque la alerta
 
-bool CuposDisponibles(){//pensarla y hacer
-
-}
 /*
 void resize_clientes (Clientes *&array_clientes, int &nclientes)
 {
@@ -109,19 +93,19 @@ int buscar_repetidos (int *array , int nespacios)
     }
     return -1;
 }
-void eliminar(Inscripcion *array_inscripcion, unsigned_int &cantInscriptos, unsigned int eliminar)
+void eliminar(Inscripcion *array_inscripcion, unsigned int &cantInscriptos, unsigned int eliminar)
 {
-    int i;
+    unsigned int i;
 
     if (eliminar == cantInscriptos - 1)
     {
-        cantInscripciones--;//si es el último, resto uno a n y listo!
+        cantInscriptos--;//si es el último, resto uno a n y listo!
         return;
     }
     //muevo las inscripciones debajo del que quiero eliminar un lugar hacia arriba tapando los datosd e l que quiero eliminar
     for (i = eliminar; i < cantInscriptos-1; i++)
     {
-        array_inscripciones[i] = array_inscripciones[i + 1];
+        array_inscripcion[i] = array_inscripcion[i + 1];
     }
 
     cantInscriptos--;
@@ -129,9 +113,9 @@ void eliminar(Inscripcion *array_inscripcion, unsigned_int &cantInscriptos, unsi
 }
 int buscar_idclases_repetidos (Inscripcion *inscripciones_cliente, unsigned int cantInscriptos)
 {
-    for(int i = 0; i<cantInscriptos; i++)
+    for( unsigned int i = 0; i < cantInscriptos; i++)
     {
-        for(int j = (i+1); j < cantInscriptos; j++)
+        for(unsigned int j = (i+1); j < cantInscriptos; j++)
         {
             if (inscripciones_cliente[i].idCurso == inscripciones_cliente[j].idCurso)
             {
@@ -144,9 +128,9 @@ int buscar_idclases_repetidos (Inscripcion *inscripciones_cliente, unsigned int 
 }
 int buscar_repetidos_eliminar (Inscripcion *inscripciones_cliente, unsigned int cantInscriptos)
 {
-    for(int i = 0; i<cantInscriptos; i++)
+    for(unsigned int i = 0; i<cantInscriptos; i++)
     {
-        for(int j = (i+1); j < nespacios; j++)
+        for(unsigned int j = (i+1); j < cantInscriptos; j++)
         {
             if (inscripciones_cliente[i].idCurso == inscripciones_cliente[j].idCurso)
             {

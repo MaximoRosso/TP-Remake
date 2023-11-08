@@ -3,14 +3,16 @@
 
 #include <libreria.h>
 
-
+//Primera parte
 bool identificar_menores(string);
 bool existencia_clase(Clases, int);
 bool chequear_letras_nombres (string);
 bool ExistenciaPersona(Clientes, int, string);
+bool cupos_al_dia(Clientes );
 
 void eliminar(Inscripcion *array_inscripcion, unsigned int &cantInscriptos, unsigned int eliminar);
 
+//Segunda parte
 int buscar_idclases_repetidos (Inscripcion *inscripciones_cliente, unsigned int cantInscriptos);//LE PASO UN ARRAY DE INCRIPCIONES, BUSCA SI HAY REPETIDOS, SI ENCUENTRA,
 int buscar_repetidos_eliminar (Inscripcion *inscripciones_cliente, unsigned int cantInscriptos); //ESTE IGUAL, SOLO QUE RETORNA 'j'
 

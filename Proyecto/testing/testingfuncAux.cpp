@@ -36,8 +36,6 @@ TEST_CASE("Existencia de la clase"){
 
     };
 }
-
-
 /*
 bool existencia_clase(Clases clase, int nclases)// no le faltaria algo como el ID que busco?
 {
@@ -67,7 +65,7 @@ TEST_CASE("Existencia de la persona"){
         bool resp;
         resp=ExistenciaPersona(arrayclientes[nclientes], nclientes, "745");//ingreso los datos a la func y le doy un ID existente
         CHECK(resp == false);
-    }
+    }//preguntarle a sol
 }
 /*
 bool ExistenciaPersona(Clientes *array_clientes, int nclientes, string IDBuscado){
@@ -82,9 +80,97 @@ bool ExistenciaPersona(Clientes *array_clientes, int nclientes, string IDBuscado
     if( aux == ultimo)
         return false;//no existe
 }
-
 */
 
+TEST_CASE("Identificar menores"){
+
+    int nclientes=3;
+    Clientes arrayclientes[3];
+
+    //REQUIRE(nclientes>0);?????????
+
+    arrayclientes[0] = {"1", "Agustín", "Guerra", "AgustínGuerra@bolandia.iri" ,"462-185-1730", "10-12-1966",	"0"};
+    arrayclientes[1] = {"21", "Valentina", "Santos", "ValentinaSantos@bolandia.iri", "267-761-2323", "20-10-2002", "-14049"};
+    arrayclientes[2] = {"140", "Alejandro", "Quintero", "AlejandroQuintero@bolandia.iri", "244-461-0321", "03-09-2010", "-9736"};
+    int i;
+    int contmenores = 0;
+    for(i = 0; i < nclientes; i++ ){
+        if(bool resp=identificar_menores(arrayclientes[i].fechaNac)==false)
+            contmenores++;
+    }
+    CHECK(contmenores==1);
+}//REVISAR SI ESTA BIEN
+
+/*
+bool identificar_menores(string fecha)
+{
+    string aux;
+
+    aux = fecha.substr(6,10);
+
+    if(aux.compare("2008") == -1)
+        return true;
+    else
+        return false;
+
+}
+*/
+
+TEST_CASE("Filtro para letras de nombres"){
+    int nclientes=3;
+    Clientes arrayclientes[3];
+    //REQUIRE(nclientes>0);?????????
+    SECTION("Hay un caracter mal en el [1]"){
+
+        arrayclientes[0] = {"131", "Maximiliano", "Tovar", "MaximilianoTovar@bolandia.iri","624-201-9885", "25-09-1993", "-914"};
+        arrayclientes[1] = {"104", "Abr9l", "Tovar", "AbrilTovar@bolandia.iri", "944-827-3204", "16-03-2000", "0"};
+        arrayclientes[2] = {"140", "Alejandro", "Quintero", "AlejandroQuintero@bolandia.iri", "244-461-0321", "03-09-2010", "-9736"};
+        int i;
+        int conterrnombres = 0;
+        for(i = 0 ; i < nclientes ; i++){
+            if(chequear_letras_nombres (arrayclientes[i].nombre))
+                conterrnombres++;
+        }
+
+        CHECK(conterrnombres == 1);
+    }
+    SECTION("Todos Bien"){
+
+        arrayclientes[0] = {"131", "Maximiliano", "Tovar", "MaximilianoTovar@bolandia.iri","624-201-9885", "25-09-1993", "-914"};
+        arrayclientes[1] = {"104", "Abril", "Tovar", "AbrilTovar@bolandia.iri", "944-827-3204", "16-03-2000", "0"};
+        arrayclientes[2] = {"140", "Alejandro", "Quintero", "AlejandroQuintero@bolandia.iri", "244-461-0321", "03-09-2010", "-9736"};
+        int i;
+        int conterrnombres = 0;
+        for(i = 0 ; i < nclientes ; i++){
+            if(chequear_letras_nombres (arrayclientes[i].nombre))
+                conterrnombres++;
+        }
+
+        CHECK(conterrnombres == 0);
+    }
+}
+/*
+bool chequear_letras_nombres (string cliente_aux)
+{
+
+    int largo_nombre = cliente_aux.length();
+
+    int i;
+
+    for(i=0;i<largo_nombre;i++)
+    {
+        /*if(cliente_aux[i] == 'á' || cliente_aux[i]== 'é'|| cliente_aux[i]== 'í' || cliente_aux[i]== 'ó' || cliente_aux[i]== 'ú') //NO ME DETECTA LAS LETRAS CON ACENTO A PESAR Q SE LO INDICO
+        {
+            continue;
+        }*/
+/*        if( !(cliente_aux[i] >= 'a' && cliente_aux[i] <= 'z') && !(cliente_aux[i] >= 'A' && cliente_aux[i] <= 'Z'))
+        {
+            return false;
+        }
+    }
+    return true;
+}
+*/
 
 
 
