@@ -94,3 +94,66 @@ void resize_clientes (Clientes *&array_clientes, int &nclientes)
     return;
 }
 */
+int buscar_repetidos (int *array , int nespacios)
+{
+    for(int i = 0; i<nespacios; i++)
+    {
+        for(int j = (i+1); j < nespacios; j++)
+        {
+            if (array[i] == array[j])
+            {
+                return i;
+            }
+
+        }
+    }
+    return -1;
+}
+void eliminar(Inscripcion *array_inscripcion, unsigned_int &cantInscriptos, unsigned int eliminar)
+{
+    int i;
+
+    if (eliminar == cantInscriptos - 1)
+    {
+        cantInscripciones--;//si es el último, resto uno a n y listo!
+        return;
+    }
+    //muevo las inscripciones debajo del que quiero eliminar un lugar hacia arriba tapando los datosd e l que quiero eliminar
+    for (i = eliminar; i < cantInscriptos-1; i++)
+    {
+        array_inscripciones[i] = array_inscripciones[i + 1];
+    }
+
+    cantInscriptos--;
+    return;
+}
+int buscar_idclases_repetidos (Inscripcion *inscripciones_cliente, unsigned int cantInscriptos)
+{
+    for(int i = 0; i<cantInscriptos; i++)
+    {
+        for(int j = (i+1); j < cantInscriptos; j++)
+        {
+            if (inscripciones_cliente[i].idCurso == inscripciones_cliente[j].idCurso)
+            {
+                return i;
+            }
+
+        }
+    }
+    return -1;
+}
+int buscar_repetidos_eliminar (Inscripcion *inscripciones_cliente, unsigned int cantInscriptos)
+{
+    for(int i = 0; i<cantInscriptos; i++)
+    {
+        for(int j = (i+1); j < nespacios; j++)
+        {
+            if (inscripciones_cliente[i].idCurso == inscripciones_cliente[j].idCurso)
+            {
+                return j;
+            }
+
+        }
+    }
+    return -1;
+}
