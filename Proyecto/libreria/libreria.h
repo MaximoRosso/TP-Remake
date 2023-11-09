@@ -25,10 +25,9 @@ struct Clientes{
 
 struct Clases{
 
-    string idClase;
+    unsigned int idClase;
     string nombre_clase;
-    string horario;
-    string cupo;
+    float horario;
 };
 
 

@@ -9,8 +9,8 @@ int main(int argc, char *argv[]) {
     ifstream archivo_datos_clases;
     archivo_datos_clases.open(NOMBRE_CSV_CLASES);
 
-    int nclientes = largo_archivo(archivo_datos_clientes);
-    int nclases = largo_archivo(archivo_datos_clases);
+    unsigned int nclientes = largo_archivo(archivo_datos_clientes);
+    unsigned int nclases = largo_archivo(archivo_datos_clases);
 
     Clientes* array_clientes = new Clientes [nclientes];
     Clases* array_clases = new Clases [nclases];

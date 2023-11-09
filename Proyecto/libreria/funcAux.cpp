@@ -78,13 +78,67 @@ void resize_clientes (Clientes *&array_clientes, int &nclientes)
     return;
 }
 */
-int buscar_repetidos (int *array , int nespacios)
+
+float buscar_horario_clase(Clases *array_clases, unsigned int idClase, int nclases) //LE DOY UN ID DE CLASE, ME DEVUELVE SU HORARIO
 {
-    for(int i = 0; i<nespacios; i++)
+    int i=0;
+
+    for(i=0; i<nclases;i++)
     {
-        for(int j = (i+1); j < nespacios; j++)
+        if ( array_clases[i].idClase == idClase )
+            return array_clases[i].horario;
+    }
+
+    if(i == nclases)
+        return -1.0;
+}
+int buscar_mismo_horario_clase (Inscripcion *inscripciones_cliente, unsigned int cantInscriptos, Clases *array_clases, unsigned int nclases )
+{
+    int i,j;
+
+    for(i=0;i<cantInscriptos;i++)
+    {
+        for(j = (i+1); j < cantInscriptos; j++)
         {
-            if (array[i] == array[j])
+            float h1,h2;
+            h1 = buscar_horario_clase(array_clases,inscripciones_cliente[i].idCurso,nclases);
+            h2 = buscar_horario_clase(array_clases,inscripciones_cliente[j].idCurso,nclases);
+
+            if (h1 == h2)
+                return i;// Tengo dos iguales, devuelvo 'i'
+
+        }
+    }
+    if(i == cantInscriptos)
+        return -1;
+}
+int buscar_mismo_horario_clase_repetido (Inscripcion *inscripciones_cliente, unsigned int cantInscriptos, Clases *array_clases, unsigned int nclases)
+{
+    int i,j;
+    for(i=0;i<cantInscriptos;i++)
+    {
+        for(j = (i+1); j < cantInscriptos; j++)
+        {
+            float h1,h2;
+            h1 = buscar_horario_clase(array_clases,inscripciones_cliente[i].idCurso,nclases);
+            h2 = buscar_horario_clase(array_clases,inscripciones_cliente[j].idCurso,nclases);
+
+            if (h1 == h2)
+                return j;// Igual que la funcion anterior, devuelvo 'j'
+
+        }
+    }
+    if(i == cantInscriptos)
+        return -1;
+}
+int buscar_idclases_repetidos (Inscripcion *inscripciones_cliente, unsigned int cantInscriptos)
+{
+    int i,j;
+    for(i = 0; i<cantInscriptos; i++)
+    {
+        for(j = (i+1); j < cantInscriptos; j++)
+        {
+            if (inscripciones_cliente[i].idCurso == inscripciones_cliente[j].idCurso)
             {
                 return i;
             }
@@ -93,9 +147,25 @@ int buscar_repetidos (int *array , int nespacios)
     }
     return -1;
 }
+int buscar_repetidos_eliminar (Inscripcion *inscripciones_cliente, unsigned int cantInscriptos)
+{
+    int i,j;
+    for(i = 0; i<cantInscriptos; i++)
+    {
+        for(j = (i+1); j < cantInscriptos; j++)
+        {
+            if (inscripciones_cliente[i].idCurso == inscripciones_cliente[j].idCurso)
+            {
+                return j;
+            }
+
+        }
+    }
+    return -1;
+}
 void eliminar(Inscripcion *array_inscripcion, unsigned int &cantInscriptos, unsigned int eliminar)
 {
-    unsigned int i;
+    int i;
 
     if (eliminar == cantInscriptos - 1)
     {
@@ -110,34 +180,4 @@ void eliminar(Inscripcion *array_inscripcion, unsigned int &cantInscriptos, unsi
 
     cantInscriptos--;
     return;
-}
-int buscar_idclases_repetidos (Inscripcion *inscripciones_cliente, unsigned int cantInscriptos)
-{
-    for( unsigned int i = 0; i < cantInscriptos; i++)
-    {
-        for(unsigned int j = (i+1); j < cantInscriptos; j++)
-        {
-            if (inscripciones_cliente[i].idCurso == inscripciones_cliente[j].idCurso)
-            {
-                return i;
-            }
-
-        }
-    }
-    return -1;
-}
-int buscar_repetidos_eliminar (Inscripcion *inscripciones_cliente, unsigned int cantInscriptos)
-{
-    for(unsigned int i = 0; i<cantInscriptos; i++)
-    {
-        for(unsigned int j = (i+1); j < cantInscriptos; j++)
-        {
-            if (inscripciones_cliente[i].idCurso == inscripciones_cliente[j].idCurso)
-            {
-                return j;
-            }
-
-        }
-    }
-    return -1;
 }
