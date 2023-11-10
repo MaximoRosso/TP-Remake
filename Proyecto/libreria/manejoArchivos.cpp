@@ -19,8 +19,10 @@ int largo_archivo (ifstream &archivo_clientes)
         cant_elemententos++;
     }
 
-    return cant_elemententos;
+    archivo.clear();
+    archivo.seekg(0,ios::beg);
 
+    return cant_elemententos;
 }
 
 void leer_archivo_clases (ifstream &archivo, Clases *array_clases)
@@ -63,6 +65,9 @@ void leer_archivo_clases (ifstream &archivo, Clases *array_clases)
 
         i++;
     }
+
+    archivo.clear();
+    archivo.seekg(0,ios::beg);
 
     return;
 }
@@ -116,4 +121,7 @@ void leer_archivo_clientes(ifstream &archivo, Clientes *array_clientes)
 
         i++;
     }
+
+    archivo.clear();
+    archivo.seekg(0,ios::beg);
 }
