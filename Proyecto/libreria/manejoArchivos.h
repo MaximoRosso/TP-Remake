@@ -10,9 +10,11 @@
 
 using namespace std;
 
-int largo_archivo (ifstream &archivo);
+/*FUNCIONES PARA MANEJO DE ARCHIVOS*/
+unsigned int largo_archivo(ifstream &archivo);
+void leer_archivo_clases (ifstream &archivo, Clases *array_clases);
+void leer_archivo_binario (ifstream &archivo, Asistencia *array_asistencia, unsigned int n_asistencias);
 void leer_archivo_clientes (ifstream &archivo, Clientes*);
-void leer_archivo_clases (ifstream &archivo, Clases*);
 
 
 #endif // MANEJOARCHIVOS_H

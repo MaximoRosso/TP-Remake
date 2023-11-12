@@ -13,7 +13,7 @@ using namespace std;
 
 struct Clientes{
 
-    string idCliente;
+    unsigned int idCliente;
     string nombre;
     string apellido;
     string email;

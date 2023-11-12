@@ -1,9 +1,9 @@
 #include <libreria.h>
 
-int largo_archivo (ifstream &archivo_clientes)
+unsigned int largo_archivo (ifstream &archivo_clientes)
 {
 
-    int cant_elemententos = 0;
+    unsigned int cant_elemententos = 0;
     string header,linea;
 
     if(archivo_clientes.is_open())
@@ -24,11 +24,38 @@ int largo_archivo (ifstream &archivo_clientes)
 
     return cant_elemententos;
 }
+void leer_archivo_binario (ifstream &archivo, Asistencia *array_asistencia, unsigned int n_asistencias)
+{
 
+    unsigned int i;
+    unsigned int idCliente_aux = 0, cantInscriptos_aux = 0; //RARO PERO ME LO PIDE QT, "VARIABLES MAY NOT BE INITIALIZED"
+
+
+    if(!archivo.is_open()){
+        cout<<"Error al abrir el archivo"<<endl;
+        return;
+    }
+
+    for(i=0; i<n_asistencias; i++)
+    {
+        archivo.read((char*)&idCliente_aux,sizeof(unsigned int));
+        archivo.read((char*)&cantInscriptos_aux,sizeof(unsigned int));
+
+        Inscripcion *inscripciones_aux = new Inscripcion [cantInscriptos_aux];
+
+        (array_asistencia + i) ->cantInscriptos = cantInscriptos_aux;
+        (array_asistencia + i) ->idCliente = idCliente_aux;
+        (array_asistencia + i) ->CursosInscriptos = inscripciones_aux;
+
+        i++;
+
+    }
+
+}
 void leer_archivo_clases (ifstream &archivo, Clases *array_clases)
 {
     string header;
-    int i = 0;
+    unsigned int i = 0;
 
     char delimiter = ',';
 
@@ -47,6 +74,8 @@ void leer_archivo_clases (ifstream &archivo, Clases *array_clases)
 
     getline(archivo,header);//Me copio el header para descartarlo
 
+    /*EXTRAIGO TODOS LOS DATOS DEL ARCHIVO*/
+
     while( !archivo.eof() && (getline(archivo,linea))){
 
         s.clear();
@@ -58,13 +87,16 @@ void leer_archivo_clases (ifstream &archivo, Clases *array_clases)
 
         /*      AGREGAR FILTROS       */
         int StoI_Id = stoi(idClase_aux);
+        float StoF_h = stof(horario_aux);
 
         (array_clases+i)->idClase = StoI_Id;
         (array_clases+i)->nombre_clase = nombre_aux;
-        (array_clases+i)->horario = horario_aux;
+        (array_clases+i)->horario = StoF_h;
 
         i++;
     }
+
+    /*RETORNAMOS EL INDICE AL PRINCIPIO PARA QUE AL ABRIRLO NUEVAMENTE YA ESTÉ AHI*/
 
     archivo.clear();
     archivo.seekg(0,ios::beg);
@@ -112,7 +144,9 @@ void leer_archivo_clientes(ifstream &archivo, Clientes *array_clientes)
 
         /*       FILTROS PARA VERIFICAR SI LOS DATOS ESTAN CORRECTOS       */
 
-        (array_clientes+i)->idCliente = id_aux;
+        unsigned int StoI = stoi(id_aux);
+
+        (array_clientes+i)->idCliente = StoI;
         (array_clientes+i)->nombre = nombre_aux;
         (array_clientes+i)->apellido = apellido_aux;
         (array_clientes+i)->email = email_aux;
