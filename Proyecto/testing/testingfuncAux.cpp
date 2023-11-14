@@ -25,9 +25,9 @@ TEST_CASE("Existencia de la clase"){
 
 
     //falta el cupo q lo vamos a hacer con lo de el generaor de clientes
-    arrayClases[0]={"1", "Spinning", "8"};
-    arrayClases[1]={"25", "Zumba", "10"};
-    arrayClases[2]={"51", "Musculacion", "15.3"};
+    arrayClases[0]={1, "Spinning", 8.00};
+    arrayClases[1]={25, "Zumba", 10.00};
+    arrayClases[2]={51, "Musculacion", 15.3};
     //inicializo mis clases
 
     SECTION("Existe la clase"){
@@ -52,9 +52,9 @@ TEST_CASE("Existencia de la persona"){
 
     //REQUIRE(nclientes>0);?????????
 
-    arrayclientes[0] = {"1", "Agustín", "Guerra", "AgustínGuerra@bolandia.iri" ,"462-185-1730", "10-12-1966",	"0"};
-    arrayclientes[1] = {"21", "Valentina", "Santos", "ValentinaSantos@bolandia.iri", "267-761-2323", "20-10-2002", "-14049"};
-    arrayclientes[2] = {"49", "Brenda", "Cabrera", "BrendaCabrera@bolandia.iri", "520-861-4363", "05-07-1971", "12326"};
+    arrayclientes[0] = {1, "Agustín", "Guerra", "AgustínGuerra@bolandia.iri" ,"462-185-1730", "10-12-1966",	"0"};
+    arrayclientes[1] = {21, "Valentina", "Santos", "ValentinaSantos@bolandia.iri", "267-761-2323", "20-10-2002", "-14049"};
+    arrayclientes[2] = {49, "Brenda", "Cabrera", "BrendaCabrera@bolandia.iri", "520-861-4363", "05-07-1971", "12326"};
     //inizializo una lista de clientes
     SECTION("Existe"){
         bool resp;
@@ -89,9 +89,9 @@ TEST_CASE("Identificar menores"){
 
     //REQUIRE(nclientes>0);?????????
 
-    arrayclientes[0] = {"1", "Agustín", "Guerra", "AgustínGuerra@bolandia.iri" ,"462-185-1730", "10-12-1966",	"0"};
-    arrayclientes[1] = {"21", "Valentina", "Santos", "ValentinaSantos@bolandia.iri", "267-761-2323", "20-10-2002", "-14049"};
-    arrayclientes[2] = {"140", "Alejandro", "Quintero", "AlejandroQuintero@bolandia.iri", "244-461-0321", "03-09-2010", "-9736"};
+    arrayclientes[0] = {1, "Agustín", "Guerra", "AgustínGuerra@bolandia.iri" ,"462-185-1730", "10-12-1966",	"0"};
+    arrayclientes[1] = {21, "Valentina", "Santos", "ValentinaSantos@bolandia.iri", "267-761-2323", "20-10-2002", "-14049"};
+    arrayclientes[2] = {140, "Alejandro", "Quintero", "AlejandroQuintero@bolandia.iri", "244-461-0321", "03-09-2010", "-9736"};
     int i;
     int contmenores = 0;
     for(i = 0; i < nclientes; i++ ){
@@ -122,9 +122,9 @@ TEST_CASE("Filtro para letras de nombres"){
     //REQUIRE(nclientes>0);?????????
     SECTION("Hay un caracter mal en el [1]"){
 
-        arrayclientes[0] = {"131", "Maximiliano", "Tovar", "MaximilianoTovar@bolandia.iri","624-201-9885", "25-09-1993", "-914"};
-        arrayclientes[1] = {"104", "Abr9l", "Tovar", "AbrilTovar@bolandia.iri", "944-827-3204", "16-03-2000", "0"};
-        arrayclientes[2] = {"140", "Alejandro", "Quintero", "AlejandroQuintero@bolandia.iri", "244-461-0321", "03-09-2010", "-9736"};
+        arrayclientes[0] = {131, "Maximiliano", "Tovar", "MaximilianoTovar@bolandia.iri","624-201-9885", "25-09-1993", "-914"};
+        arrayclientes[1] = {104, "Abr9l", "Tovar", "AbrilTovar@bolandia.iri", "944-827-3204", "16-03-2000", "0"};
+        arrayclientes[2] = {140, "Alejandro", "Quintero", "AlejandroQuintero@bolandia.iri", "244-461-0321", "03-09-2010", "-9736"};
         int i;
         int conterrnombres = 0;
         for(i = 0 ; i < nclientes ; i++){
@@ -136,9 +136,9 @@ TEST_CASE("Filtro para letras de nombres"){
     }
     SECTION("Todos Bien"){
 
-        arrayclientes[0] = {"131", "Maximiliano", "Tovar", "MaximilianoTovar@bolandia.iri","624-201-9885", "25-09-1993", "-914"};
-        arrayclientes[1] = {"104", "Abril", "Tovar", "AbrilTovar@bolandia.iri", "944-827-3204", "16-03-2000", "0"};
-        arrayclientes[2] = {"140", "Alejandro", "Quintero", "AlejandroQuintero@bolandia.iri", "244-461-0321", "03-09-2010", "-9736"};
+        arrayclientes[0] = {131, "Maximiliano", "Tovar", "MaximilianoTovar@bolandia.iri","624-201-9885", "25-09-1993", "-914"};
+        arrayclientes[1] = {104, "Abril", "Tovar", "AbrilTovar@bolandia.iri", "944-827-3204", "16-03-2000", "0"};
+        arrayclientes[2] = {140, "Alejandro", "Quintero", "AlejandroQuintero@bolandia.iri", "244-461-0321", "03-09-2010", "-9736"};
         int i;
         int conterrnombres = 0;
         for(i = 0 ; i < nclientes ; i++){
@@ -169,6 +169,187 @@ bool chequear_letras_nombres (string cliente_aux)
         }
     }
     return true;
+}
+*/
+
+TEST_CASE("Busqueda de IDclases repetidas"){
+
+    SECTION("Hay repetidos"){
+        Asistencia AsistenciaCliente;
+        Inscripcion array_inscripciones[4];
+        array_inscripciones[0]={ 3 , 4215165168 };//este es el que quiero encontrar para luego comparar con el otro
+        array_inscripciones[1]={ 3 , 2348752390 };
+        array_inscripciones[2]={ 5 , 7813401343 };
+        array_inscripciones[3]={ 8 , 1348951434 };
+        Inscripcion *puntero=&array_inscripciones[4];
+
+        AsistenciaCliente={ 7 , 4, puntero };
+        int resp=buscar_idclases_repetidos( puntero, 4 );
+
+        REQUIRE(resp==0);
+    }
+
+    SECTION("No hay repetidos"){
+        Asistencia AsistenciaCliente;
+        Inscripcion array_inscripciones[4];
+        array_inscripciones[0]={ 3 , 4215165168 };
+        array_inscripciones[1]={ 7 , 2348752390 };
+        array_inscripciones[2]={ 5 , 7813401343 };
+        array_inscripciones[3]={ 8 , 1348951434 };
+        Inscripcion *puntero=&array_inscripciones[4];
+
+        AsistenciaCliente={ 7 , 4, puntero };
+        int resp=buscar_idclases_repetidos( puntero, 4 );
+
+        REQUIRE(resp==-1);
+    }
+}
+
+/*
+typedef struct {
+
+    unsigned int idCliente, cantInscriptos;
+    Inscripcion* CursosInscriptos;
+
+} Asistencia;
+
+typedef struct {
+
+    unsigned int idCurso;
+    time_t fechaInscripcion;
+
+} Inscripcion;
+int buscar_idclases_repetidos (Inscripcion *inscripciones_cliente, unsigned int cantInscriptos)
+{
+    unsigned int i,j;
+    for(i = 0; i<cantInscriptos; i++)
+    {
+        for(j = (i+1); j < cantInscriptos; j++)
+        {
+            if (inscripciones_cliente[i].idCurso == inscripciones_cliente[j].idCurso)
+            {
+                return i;
+            }
+
+        }
+    }
+    return -1;
+}
+*/
+
+TEST_CASE("Bucar los repetidos para eliminar repetidos"){
+    SECTION("Hay repetidos"){
+        Asistencia AsistenciaCliente;
+        Inscripcion array_inscripciones[4];
+        array_inscripciones[0]={ 3 , 4215165168 };
+        array_inscripciones[1]={ 3 , 2348752390 };//este es el que quiero encontrar para luego eliminarlo
+        array_inscripciones[2]={ 5 , 7813401343 };
+        array_inscripciones[3]={ 8 , 1348951434 };
+        Inscripcion *puntero=&array_inscripciones[4];
+
+        AsistenciaCliente={ 7 , 4, puntero };
+        int resp=buscar_repetidos_eliminar( puntero, 4 );
+
+        REQUIRE(resp==1);
+    }
+
+    SECTION("No hay repetidos"){
+        Asistencia AsistenciaCliente;
+        Inscripcion array_inscripciones[4];
+        array_inscripciones[0]={ 3 , 4215165168 };
+        array_inscripciones[1]={ 7 , 2348752390 };
+        array_inscripciones[2]={ 5 , 7813401343 };
+        array_inscripciones[3]={ 8 , 1348951434 };
+        Inscripcion *puntero=&array_inscripciones[4];
+
+        AsistenciaCliente={ 7 , 4, puntero };
+        int resp=buscar_repetidos_eliminar( puntero, 4 );
+
+        REQUIRE(resp==-1);
+    }
+}
+
+/*
+
+typedef struct {
+
+    unsigned int idCliente, cantInscriptos;
+    Inscripcion* CursosInscriptos;
+
+} Asistencia;
+
+typedef struct {
+
+    unsigned int idCurso;
+    time_t fechaInscripcion;
+
+} Inscripcion;
+int buscar_repetidos_eliminar (Inscripcion *inscripciones_cliente, unsigned int cantInscriptos)
+{
+    unsigned int i,j;
+    for(i = 0; i<cantInscriptos; i++)
+    {
+        for(j = (i+1); j < cantInscriptos; j++)
+        {
+            if (inscripciones_cliente[i].idCurso == inscripciones_cliente[j].idCurso)
+            {
+                return j;
+            }
+
+        }
+    }
+    return -1;
+}
+
+*/
+
+TEST_CASE("Eliminar el repetido que me envían"){
+    Asistencia AsistenciaCliente;
+    unsigned int cantinscriptos=4;
+    Inscripcion *array_inscripciones= new Inscripcion[cantinscriptos];
+    array_inscripciones[0]={ 3 , 4215165168 };
+    array_inscripciones[1]={ 3 , 2348752390 };//este es el que quiero encontrar para luego eliminarlo
+    array_inscripciones[2]={ 5 , 7813401343 };
+    array_inscripciones[3]={ 8 , 1348951434 };
+    Inscripcion *puntero=&array_inscripciones[cantinscriptos];
+    int posaeliminar=1;
+    unsigned int nuevacant=eliminar(array_inscripciones, cantinscriptos, posaeliminar);
+
+}
+
+/*
+
+typedef struct {
+
+    unsigned int idCliente, cantInscriptos;
+    Inscripcion* CursosInscriptos;
+
+} Asistencia;
+
+typedef struct {
+
+    unsigned int idCurso;
+    time_t fechaInscripcion;
+
+} Inscripcion;
+
+void eliminar(Inscripcion *array_inscripcion, unsigned int &cantInscriptos, unsigned int eliminar)
+{
+    unsigned int i;
+
+    if (eliminar == cantInscriptos - 1)
+    {
+        cantInscriptos--;//si es el último, resto uno a n y listo!
+        return;
+    }
+    //muevo las inscripciones debajo del que quiero eliminar un lugar hacia arriba tapando los datosd e l que quiero eliminar
+    for (i = eliminar; i < cantInscriptos-1; i++)
+    {
+        array_inscripcion[i] = array_inscripcion[i + 1];
+    }
+
+    cantInscriptos--;
+    return;
 }
 */
 
