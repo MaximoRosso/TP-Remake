@@ -12,11 +12,11 @@ int main(int argc, char *argv[]) {
     ifstream archivo_datos_clases;
     archivo_datos_clases.open(NOMBRE_CSV_CLASES);
     ifstream archivo_binario;
-    infile.open(BINARIO, ios::binary);
-
+    archivo_binario.open(BINARIO, ios::binary);
+//por que no toma infile
 
     /*SE DECLARAN LOS ARRAYS DINÁMICOS QUE VAMOS A USAR*/
-    unsigned int n_asistencias = sizeof(infile)/sizeof(Asistencia);
+    unsigned int n_asistencias = sizeof(archivo_binario)/sizeof(Asistencia);
     unsigned int nclientes = largo_archivo(archivo_datos_clientes);
     unsigned int nclases = largo_archivo(archivo_datos_clases);
 

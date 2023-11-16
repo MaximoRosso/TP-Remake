@@ -19,7 +19,7 @@ struct Clientes{
     string email;
     string telefono;
     string fechaNac;
-    string estado;
+    int estado;
 
 };
 

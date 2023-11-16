@@ -19,8 +19,8 @@ unsigned int largo_archivo (ifstream &archivo_clientes)
         cant_elemententos++;
     }
 
-    archivo.clear();
-    archivo.seekg(0,ios::beg);
+    archivo_clientes.clear();
+    archivo_clientes.seekg(0,ios::beg);
 
     return cant_elemententos;
 }
@@ -145,13 +145,14 @@ void leer_archivo_clientes(ifstream &archivo, Clientes *array_clientes)
         /*       FILTROS PARA VERIFICAR SI LOS DATOS ESTAN CORRECTOS       */
 
         unsigned int StoI = stoi(id_aux);
+        unsigned int EstadotoI = stoi(estado_aux);
 
         (array_clientes+i)->idCliente = StoI;
         (array_clientes+i)->nombre = nombre_aux;
         (array_clientes+i)->apellido = apellido_aux;
         (array_clientes+i)->email = email_aux;
         (array_clientes+i)->fechaNac = fechaNac_aux;
-        (array_clientes+i)->estado = estado_aux;
+        (array_clientes+i)->estado = EstadotoI;
 
         i++;
     }

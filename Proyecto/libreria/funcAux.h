@@ -5,10 +5,11 @@
 
 /*FILTROS PARA LOS DATOS*/
 bool identificar_menores(string);
-bool existencia_clase(Clases, int);
+bool existencia_clase(unsigned int , int);
 bool chequear_letras_nombres (string);
-bool ExistenciaPersona(Clientes, int, string);
-bool cupos_al_dia(Clientes );
+bool ExistenciaPersona(Clientes *, int, unsigned int);
+bool EstadoPos(int );
+
 
 /*FUNCIONES QUE REVISAN QUE NO TENGA 2 CLASES EN EL MISMO HORARIO*/
 float buscar_horario_clase(Clases *array_clases, unsigned int idClase, unsigned int nclases); //LE DOY UN ID DE CLASE, ME DEVUELVE SU HORARIO ----> FUNCIONA BIEN
